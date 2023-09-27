@@ -20,5 +20,7 @@ namespace blogpessoal.Model
         [Column(TypeName = "varchar")] //Definindo como atributo da tabela e o tipo
         [StringLength(1000)] //Definindo o máximo de caracteres
         public string Texto {get; set;} = string.Empty;
+
+        public virtual Tema? Tema {get; set;}
     }
 }
