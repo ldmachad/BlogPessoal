@@ -30,9 +30,9 @@ namespace blogpessoal.Controllers
 
         [Authorize]
         [HttpGet("{id}")]
-        public async Task<ActionResult> GetByUsuario(string usuario)
+        public async Task<ActionResult> GetById(long id)
         {
-            var Resposta = await _userService.GetByUsuario(usuario);
+            var Resposta = await _userService.GetById(id);
 
             if (Resposta == null)
             {
@@ -58,7 +58,7 @@ namespace blogpessoal.Controllers
             if (Resposta is null)
                 return BadRequest("Usuário já está Cadastrado!");
 
-            return CreatedAtAction(nameof(GetByUsuario), new { id = user.Id }, user);
+            return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
         }
 
         [Authorize]

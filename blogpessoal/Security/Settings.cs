@@ -2,7 +2,7 @@ namespace blogpessoal.Security
 {
     public class Settings
     {
-        private static string secret = "456134b26a99f9f595bd0044128d75e0aae35bef23d30e5c737be9234bfde674";
+        private static string secret = "bb92c444c29483fdd41c33f5d36c0320ae50a045bafb181de7c115639c211bdb";
 
         public static string Secret {get => secret; set => secret = value;}
     }
