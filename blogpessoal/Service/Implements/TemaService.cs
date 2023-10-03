@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using blogpessoal.Data;
 using blogpessoal.Model;
 using Microsoft.EntityFrameworkCore;
@@ -42,23 +38,24 @@ namespace blogpessoal.Service.Implements
         public async Task<IEnumerable<Tema>> GetByDescricao(string descricao)
         {
             var Tema = await _context.Temas
-                                 .Include(t => t.Postagem)
-                                 .Where(p => p.Descricao.Contains(descricao))
-                                 .ToListAsync();
+                .Include(t => t.Postagem)
+                .Where(p => p.Descricao.Contains(descricao))
+                .ToListAsync();
+
             return Tema;
         }
 
-        public async Task<Tema?> Create(Tema Tema)
+        public async Task<Tema?> Create(Tema tema)
         {
-            await _context.Temas.AddAsync(Tema);
+            await _context.Temas.AddAsync(tema);
             await _context.SaveChangesAsync();
 
-            return Tema;
+            return tema;
         }
 
-        public async Task<Tema?> Update(Tema Tema)
+        public async Task<Tema?> Update(Tema tema)
         {
-            var TemaUpdate = await _context.Temas.FindAsync(Tema.Id);
+            var TemaUpdate = await _context.Temas.FindAsync(tema.Id);
 
             if (TemaUpdate is null)
             {
@@ -66,15 +63,15 @@ namespace blogpessoal.Service.Implements
             }
 
             _context.Entry(TemaUpdate).State = EntityState.Detached;
-            _context.Entry(Tema).State = EntityState.Modified;
+            _context.Entry(tema).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            return Tema;
+            return tema;
         }
 
-        public async Task Delete(Tema Tema)
+        public async Task Delete(Tema tema)
         {
-            _context.Remove(Tema);
+            _context.Remove(tema);
             await _context.SaveChangesAsync();
         }
     }
