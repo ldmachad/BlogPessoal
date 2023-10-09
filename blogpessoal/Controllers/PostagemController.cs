@@ -59,7 +59,7 @@ namespace blogpessoal.Controllers
 
             if(Resposta is null)
             {
-                return NotFound("Postagem e/ou Tema n�o encontrados!");
+                return NotFound("Postagem e/ou Tema não encontrados!");
             }
 
             return CreatedAtAction(nameof(GetById), new { id = postagem.Id }, postagem);
@@ -70,7 +70,7 @@ namespace blogpessoal.Controllers
         {
             if(postagem.Id == 0)
             {
-                return BadRequest("Id da postagem � inv�lido!");
+                return BadRequest("Id da postagem é inválido!");
             }
 
             var validarPostagem = await _postagemValidator.ValidateAsync(postagem);
@@ -84,7 +84,7 @@ namespace blogpessoal.Controllers
 
             if(Resposta is null)
             {
-                return NotFound("Postagem n�o encontrada!");
+                return NotFound("Postagem não encontrada!");
             }
 
             return Ok(Resposta);
@@ -97,7 +97,7 @@ namespace blogpessoal.Controllers
 
             if(BuscaPostagem is null)
             {
-                return NotFound("Postagem n�o encontrada!");
+                return NotFound("Postagem não encontrada!");
             }
 
             await _postagemService.Delete(BuscaPostagem);
