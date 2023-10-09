@@ -162,8 +162,6 @@ namespace blogpessoal
                 });
             }
             
-
-            app.UseHttpsRedirection();
             // Inicializa o CORS
             app.UseCors("MyPolicy");
 
