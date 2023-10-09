@@ -150,6 +150,7 @@ namespace blogpessoal
             // Configure the HTTP request pipeline.
             
                 app.UseSwagger();
+                app.UseSwaggerUI();
 
             // Swagger como homepage na nuvem
 
