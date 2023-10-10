@@ -1,3 +1,4 @@
+using blogpessoal.Configuration;
 using blogpessoal.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -5,7 +6,7 @@ namespace blogpessoal.Data
 {
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options){}
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,9 +29,9 @@ namespace blogpessoal.Data
 
         // Registrar DbSet - Objeto responsável por manipular a Tabela
 
-        public DbSet<Postagem> Postagens {get; set;} = null!;
-        public DbSet<Tema> Temas {get; set;} = null!;
-        public DbSet<User> Users {get; set;} = null!;
+        public DbSet<Postagem> Postagens { get; set; } = null!;
+        public DbSet<Tema> Temas { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -61,6 +62,14 @@ namespace blogpessoal.Data
             }
 
             return base.SaveChangesAsync(cancellationToken);
+        }
+
+        // Ajusta a Data para o formato UTC - Compatível com qualquer Banco de dados Relacional
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+        {
+            configurationBuilder
+                .Properties<DateTimeOffset>()
+                .HaveConversion<DateTimeOffsetConverter>();
         }
     }
 }

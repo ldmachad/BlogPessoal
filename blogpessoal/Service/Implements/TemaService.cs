@@ -39,7 +39,8 @@ namespace blogpessoal.Service.Implements
         {
             var Tema = await _context.Temas
                 .Include(t => t.Postagem)
-                .Where(p => p.Descricao.Contains(descricao))
+                .Where(p => p.Descricao.ToUpper()
+                                       .Contains(descricao.ToUpper()))
                 .ToListAsync();
 
             return Tema;
