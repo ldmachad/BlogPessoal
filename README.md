@@ -1,6 +1,6 @@
 # BlogPessoal 📝
 
-Este projeto é uma aplicação de blog pessoal que permite aos usuários criar postagens, associá-las a temas e compartilhar suas histórias online. A aplicação também incorpora autenticação com token Bearer JWT para garantir a segurança das postagens dos usuários.
+Este projeto é uma aplicação de um blog pessoal que permite aos usuários criar postagens, associá-las a temas e compartilhar suas histórias online. A aplicação também incorpora autenticação com token Bearer JWT para garantir a segurança das postagens dos usuários.
 
 ## Funcionalidades
 
