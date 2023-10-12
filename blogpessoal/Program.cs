@@ -20,8 +20,6 @@ namespace blogpessoal
     {
         public static void Main(string[] args)
         {
-            //Testando versionamento de código
-
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
